@@ -39,7 +39,7 @@ class App extends Component {
         largeImageURL,
       }));
       let hitsMap = new Set(Object.entries(hits));
-      console.log('hitsMap', hitsMap);
+      // console.log('hitsMap', hitsMap);
       this.setState(prevState => ({
         images:
           prevState.query !== this.state.query
