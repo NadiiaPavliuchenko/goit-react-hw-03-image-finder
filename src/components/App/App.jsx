@@ -38,15 +38,14 @@ class App extends Component {
         webformatURL,
         largeImageURL,
       }));
-      let hitsMap = new Set(Object.entries(hits));
-      // console.log('hitsMap', hitsMap);
       this.setState(prevState => ({
         images:
           prevState.query !== this.state.query
-            ? [...hitsMap]
-            : [...prevState.images, ...hitsMap],
+            ? [...hits]
+            : [...prevState.images, ...hits],
         loadMore: this.state.page < Math.ceil(totalHits / 12),
       }));
+      console.log(this.state.loadMore);
     } catch (err) {
       console.log(err);
     } finally {
@@ -77,7 +76,8 @@ class App extends Component {
   };
 
   render() {
-    const { images, isLoading, showModal, selectedImage } = this.state;
+    const { images, isLoading, showModal, selectedImage, loadMore } =
+      this.state;
     return (
       <StyledApp>
         <Searchbar onSubmit={this.handleFormSubmit} />
@@ -93,7 +93,7 @@ class App extends Component {
           {showModal && (
             <Modal imageData={selectedImage} onHideModal={this.handleModal} />
           )}
-          {images.length > 0 && <Button loadMore={this.handleLoadMore} />}
+          {loadMore && <Button loadMore={this.handleLoadMore} />}
         </ImageGallery>
       </StyledApp>
     );

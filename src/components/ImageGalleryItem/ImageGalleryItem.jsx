@@ -6,8 +6,7 @@ class ImageGalleryItem extends Component {
     this.props.onShowModal();
   };
   render() {
-    // const key = this.props.imageData[0];
-    const { id, webformatURL } = this.props.imageData[1];
+    const { id, webformatURL } = this.props.imageData;
     return (
       <ImageGalleryLi key={id}>
         <ImageGalleryLiImage
