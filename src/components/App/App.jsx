@@ -45,7 +45,6 @@ class App extends Component {
             : [...prevState.images, ...hits],
         loadMore: this.state.page < Math.ceil(totalHits / 12),
       }));
-      console.log(this.state.loadMore);
     } catch (err) {
       console.log(err);
     } finally {
